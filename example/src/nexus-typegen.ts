@@ -4,13 +4,9 @@
  */
 
 
-import type { core } from "nexus"
 
-declare global {
-  interface NexusGenCustomOutputMethods<TypeName extends string> {
-    filterable(...args: any): void
-  }
-}
+
+
 
 
 declare global {
@@ -18,7 +14,7 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  BooleanFilters: { // input type
+  BooleanWhereInput: { // input type
     contains?: boolean | null; // Boolean
     endsWith?: boolean | null; // Boolean
     equals?: boolean | null; // Boolean
@@ -31,7 +27,20 @@ export interface NexusGenInputs {
     notIn?: boolean | null; // Boolean
     startsWith?: boolean | null; // Boolean
   }
-  FloatFilters: { // input type
+  DateWhereInput: { // input type
+    contains?: NexusGenScalars['Date'] | null; // Date
+    endsWith?: NexusGenScalars['Date'] | null; // Date
+    equals?: NexusGenScalars['Date'] | null; // Date
+    gt?: NexusGenScalars['Date'] | null; // Date
+    gte?: NexusGenScalars['Date'] | null; // Date
+    in?: NexusGenScalars['Date'] | null; // Date
+    lt?: NexusGenScalars['Date'] | null; // Date
+    lte?: NexusGenScalars['Date'] | null; // Date
+    not?: NexusGenScalars['Date'] | null; // Date
+    notIn?: NexusGenScalars['Date'] | null; // Date
+    startsWith?: NexusGenScalars['Date'] | null; // Date
+  }
+  FloatWhereInput: { // input type
     contains?: number | null; // Float
     endsWith?: number | null; // Float
     equals?: number | null; // Float
@@ -44,20 +53,20 @@ export interface NexusGenInputs {
     notIn?: number | null; // Float
     startsWith?: number | null; // Float
   }
-  IDFilters: { // input type
-    contains?: string | null; // String
-    endsWith?: string | null; // String
-    equals?: string | null; // String
-    gt?: string | null; // String
-    gte?: string | null; // String
-    in?: string | null; // String
-    lt?: string | null; // String
-    lte?: string | null; // String
-    not?: string | null; // String
-    notIn?: string | null; // String
-    startsWith?: string | null; // String
+  IDWhereInput: { // input type
+    contains?: string | null; // ID
+    endsWith?: string | null; // ID
+    equals?: string | null; // ID
+    gt?: string | null; // ID
+    gte?: string | null; // ID
+    in?: string | null; // ID
+    lt?: string | null; // ID
+    lte?: string | null; // ID
+    not?: string | null; // ID
+    notIn?: string | null; // ID
+    startsWith?: string | null; // ID
   }
-  IntFilters: { // input type
+  IntWhereInput: { // input type
     contains?: number | null; // Int
     endsWith?: number | null; // Int
     equals?: number | null; // Int
@@ -71,10 +80,12 @@ export interface NexusGenInputs {
     startsWith?: number | null; // Int
   }
   PostWhereInput: { // input type
-    id?: NexusGenInputs['IDFilters'] | null; // IDFilters
-    title?: NexusGenInputs['StringFilters'] | null; // StringFilters
+    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createdAt?: NexusGenInputs['DateWhereInput'] | null; // DateWhereInput
+    id?: NexusGenInputs['IDWhereInput'] | null; // IDWhereInput
+    title?: NexusGenInputs['StringWhereInput'] | null; // StringWhereInput
   }
-  StringFilters: { // input type
+  StringWhereInput: { // input type
     contains?: string | null; // String
     endsWith?: string | null; // String
     equals?: string | null; // String
@@ -88,8 +99,9 @@ export interface NexusGenInputs {
     startsWith?: string | null; // String
   }
   UserWhereInput: { // input type
-    id?: NexusGenInputs['IDFilters'] | null; // IDFilters
-    name?: NexusGenInputs['StringFilters'] | null; // StringFilters
+    id?: NexusGenInputs['IDWhereInput'] | null; // IDWhereInput
+    name?: NexusGenInputs['StringWhereInput'] | null; // StringWhereInput
+    posts?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
   }
 }
 
@@ -102,10 +114,13 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  Date: any
 }
 
 export interface NexusGenObjects {
   Post: { // root type
+    author?: NexusGenRootTypes['User'] | null; // User
+    createdAt?: NexusGenScalars['Date'] | null; // Date
     id?: string | null; // ID
     title?: string | null; // String
   }
@@ -113,6 +128,7 @@ export interface NexusGenObjects {
   User: { // root type
     id?: string | null; // ID
     name?: string | null; // String
+    posts?: NexusGenRootTypes['Post'] | null; // Post
   }
 }
 
@@ -128,6 +144,8 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Post: { // field return type
+    author: NexusGenRootTypes['User'] | null; // User
+    createdAt: NexusGenScalars['Date'] | null; // Date
     id: string | null; // ID
     title: string | null; // String
   }
@@ -138,11 +156,14 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     id: string | null; // ID
     name: string | null; // String
+    posts: NexusGenRootTypes['Post'] | null; // Post
   }
 }
 
 export interface NexusGenFieldTypeNames {
   Post: { // field return type name
+    author: 'User'
+    createdAt: 'Date'
     id: 'ID'
     title: 'String'
   }
@@ -153,6 +174,7 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     id: 'ID'
     name: 'String'
+    posts: 'Post'
   }
 }
 
@@ -230,6 +252,7 @@ declare global {
   interface NexusGenPluginInputTypeConfig<TypeName extends string> {
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
+    filterable?: boolean
   }
   interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
   }

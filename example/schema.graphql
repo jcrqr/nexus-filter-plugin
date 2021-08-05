@@ -2,203 +2,262 @@
 ### Do not make changes to this file directly
 
 
-input BooleanFilters {
-  """Checks if value contains the input"""
+input BooleanWhereInput {
+  """Checks if value contains the input."""
   contains: Boolean
 
-  """Checks if value ends with the input"""
+  """Checks if value ends with the input."""
   endsWith: Boolean
 
-  """Checks if value equals input"""
+  """Checks if value equals input."""
   equals: Boolean
 
-  """Checks if value is greater than input"""
+  """Checks if value is greater than input."""
   gt: Boolean
 
-  """Checks if value is greater or equal to input"""
+  """Checks if value is greater or equal to input."""
   gte: Boolean
 
-  """Checks if value exists in list of inputs"""
+  """Checks if value exists in list of inputs."""
   in: Boolean
 
-  """Checks if value is less than input"""
+  """Checks if value is less than input."""
   lt: Boolean
 
-  """Checks if value is less than or equal to input"""
+  """Checks if value is less than or equal to input."""
   lte: Boolean
 
-  """Checks if value does not equal input"""
+  """Checks if value does not equal input."""
   not: Boolean
 
-  """Checks if value does not exist in list of inputs"""
+  """Checks if value does not exist in list of inputs."""
   notIn: Boolean
 
-  """Checks if value starts with the input"""
+  """Checks if value starts with the input."""
   startsWith: Boolean
 }
 
-input FloatFilters {
-  """Checks if value contains the input"""
+scalar Date
+
+input DateWhereInput {
+  """Checks if value contains the input."""
+  contains: Date
+
+  """Checks if value ends with the input."""
+  endsWith: Date
+
+  """Checks if value equals input."""
+  equals: Date
+
+  """Checks if value is greater than input."""
+  gt: Date
+
+  """Checks if value is greater or equal to input."""
+  gte: Date
+
+  """Checks if value exists in list of inputs."""
+  in: Date
+
+  """Checks if value is less than input."""
+  lt: Date
+
+  """Checks if value is less than or equal to input."""
+  lte: Date
+
+  """Checks if value does not equal input."""
+  not: Date
+
+  """Checks if value does not exist in list of inputs."""
+  notIn: Date
+
+  """Checks if value starts with the input."""
+  startsWith: Date
+}
+
+input FloatWhereInput {
+  """Checks if value contains the input."""
   contains: Float
 
-  """Checks if value ends with the input"""
+  """Checks if value ends with the input."""
   endsWith: Float
 
-  """Checks if value equals input"""
+  """Checks if value equals input."""
   equals: Float
 
-  """Checks if value is greater than input"""
+  """Checks if value is greater than input."""
   gt: Float
 
-  """Checks if value is greater or equal to input"""
+  """Checks if value is greater or equal to input."""
   gte: Float
 
-  """Checks if value exists in list of inputs"""
+  """Checks if value exists in list of inputs."""
   in: Float
 
-  """Checks if value is less than input"""
+  """Checks if value is less than input."""
   lt: Float
 
-  """Checks if value is less than or equal to input"""
+  """Checks if value is less than or equal to input."""
   lte: Float
 
-  """Checks if value does not equal input"""
+  """Checks if value does not equal input."""
   not: Float
 
-  """Checks if value does not exist in list of inputs"""
+  """Checks if value does not exist in list of inputs."""
   notIn: Float
 
-  """Checks if value starts with the input"""
+  """Checks if value starts with the input."""
   startsWith: Float
 }
 
-input IDFilters {
-  """Checks if value contains the input"""
-  contains: String
+input IDWhereInput {
+  """Checks if value contains the input."""
+  contains: ID
 
-  """Checks if value ends with the input"""
-  endsWith: String
+  """Checks if value ends with the input."""
+  endsWith: ID
 
-  """Checks if value equals input"""
-  equals: String
+  """Checks if value equals input."""
+  equals: ID
 
-  """Checks if value is greater than input"""
-  gt: String
+  """Checks if value is greater than input."""
+  gt: ID
 
-  """Checks if value is greater or equal to input"""
-  gte: String
+  """Checks if value is greater or equal to input."""
+  gte: ID
 
-  """Checks if value exists in list of inputs"""
-  in: String
+  """Checks if value exists in list of inputs."""
+  in: ID
 
-  """Checks if value is less than input"""
-  lt: String
+  """Checks if value is less than input."""
+  lt: ID
 
-  """Checks if value is less than or equal to input"""
-  lte: String
+  """Checks if value is less than or equal to input."""
+  lte: ID
 
-  """Checks if value does not equal input"""
-  not: String
+  """Checks if value does not equal input."""
+  not: ID
 
-  """Checks if value does not exist in list of inputs"""
-  notIn: String
+  """Checks if value does not exist in list of inputs."""
+  notIn: ID
 
-  """Checks if value starts with the input"""
-  startsWith: String
+  """Checks if value starts with the input."""
+  startsWith: ID
 }
 
-input IntFilters {
-  """Checks if value contains the input"""
+input IntWhereInput {
+  """Checks if value contains the input."""
   contains: Int
 
-  """Checks if value ends with the input"""
+  """Checks if value ends with the input."""
   endsWith: Int
 
-  """Checks if value equals input"""
+  """Checks if value equals input."""
   equals: Int
 
-  """Checks if value is greater than input"""
+  """Checks if value is greater than input."""
   gt: Int
 
-  """Checks if value is greater or equal to input"""
+  """Checks if value is greater or equal to input."""
   gte: Int
 
-  """Checks if value exists in list of inputs"""
+  """Checks if value exists in list of inputs."""
   in: Int
 
-  """Checks if value is less than input"""
+  """Checks if value is less than input."""
   lt: Int
 
-  """Checks if value is less than or equal to input"""
+  """Checks if value is less than or equal to input."""
   lte: Int
 
-  """Checks if value does not equal input"""
+  """Checks if value does not equal input."""
   not: Int
 
-  """Checks if value does not exist in list of inputs"""
+  """Checks if value does not exist in list of inputs."""
   notIn: Int
 
-  """Checks if value starts with the input"""
+  """Checks if value starts with the input."""
   startsWith: Int
 }
 
+"""A blog post"""
 type Post {
+  """The user who authored the post"""
+  author: User
+
+  """The post creation date"""
+  createdAt: Date
+
+  """The post unique identifier"""
   id: ID
+
+  """The post title"""
   title: String
 }
 
 input PostWhereInput {
-  id: IDFilters
-  title: StringFilters
+  author: UserWhereInput
+  createdAt: DateWhereInput
+  id: IDWhereInput
+  title: StringWhereInput
 }
 
 type Query {
+  """List posts"""
   posts(where: PostWhereInput): [Post]!
+
+  """List users"""
   users(where: UserWhereInput): [User]!
 }
 
-input StringFilters {
-  """Checks if value contains the input"""
+input StringWhereInput {
+  """Checks if value contains the input."""
   contains: String
 
-  """Checks if value ends with the input"""
+  """Checks if value ends with the input."""
   endsWith: String
 
-  """Checks if value equals input"""
+  """Checks if value equals input."""
   equals: String
 
-  """Checks if value is greater than input"""
+  """Checks if value is greater than input."""
   gt: String
 
-  """Checks if value is greater or equal to input"""
+  """Checks if value is greater or equal to input."""
   gte: String
 
-  """Checks if value exists in list of inputs"""
+  """Checks if value exists in list of inputs."""
   in: String
 
-  """Checks if value is less than input"""
+  """Checks if value is less than input."""
   lt: String
 
-  """Checks if value is less than or equal to input"""
+  """Checks if value is less than or equal to input."""
   lte: String
 
-  """Checks if value does not equal input"""
+  """Checks if value does not equal input."""
   not: String
 
-  """Checks if value does not exist in list of inputs"""
+  """Checks if value does not exist in list of inputs."""
   notIn: String
 
-  """Checks if value starts with the input"""
+  """Checks if value starts with the input."""
   startsWith: String
 }
 
-"""original descr"""
+"""A user account"""
 type User {
+  """The user unique identifier"""
   id: ID
+
+  """The user name"""
   name: String
+
+  """A list of posts authored by the user"""
+  posts: Post
 }
 
 input UserWhereInput {
-  id: IDFilters
-  name: StringFilters
+  id: IDWhereInput
+  name: StringWhereInput
+  posts: PostWhereInput
 }

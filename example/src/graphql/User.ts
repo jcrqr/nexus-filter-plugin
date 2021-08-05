@@ -2,19 +2,24 @@ import { extendType, objectType } from 'nexus'
 
 export const User = objectType({
   name: 'User',
-  description: 'original descr',
+  description: 'A user account',
   definition(t) {
-    t.id('id')
-    t.string('name')
+    t.id('id', { description: 'The user unique identifier' })
+    t.string('name', { description: 'The user name' })
+    t.field('posts', {
+      type: 'Post',
+      description: 'A list of posts authored by the user',
+    })
   },
 })
 
 export const UserQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.filterable('users', {
+    t.nonNull.list.field('users', {
       type: User,
-      // @ts-ignore
+      description: 'List users',
+      filterable: true,
       resolve(_, args) {
         console.log('Args', args)
 

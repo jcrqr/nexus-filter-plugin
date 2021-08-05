@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --no-notify src/index.ts",
+    "dev": "tsc -w",
     "build": "tsc"
   },
   "keywords": ["nexus", "nexus-plugin"],
@@ -21,7 +21,7 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "printWidth": 120
+    "printWidth": 100
   },
   "peerDependencies": {
     "graphql": "^15.5.1",
